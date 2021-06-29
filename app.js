@@ -1,9 +1,12 @@
 const express = require('express');
 
-const sequelize = require('./config/database');
 const { errorHandler, notFound } = require('./controllers/error');
+const authRoutes = require('./routes/auth');
+const sequelize = require('./config/database');
 
 const app = express();
+
+app.use('/auth', authRoutes);
 
 app.use(notFound);
 
