@@ -1,3 +1,27 @@
+# Authentication Requirements #
+
+Most of endpoints requires user to be logged in.  
+To access the endpoints:
+* Register from the path `/auth/register`
+* Login from the path `/auth/login` which gives you access token via response body.
+* Take the string value corresponding to accessToken property.
+* In the header of endpoint which requires user to be logged in, write `Authorization` as key and Bearer accessToken as value.
+
+**Example:**
+  
+```json
+  {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIzLCJpYXQiOjE2MjQ5Nzg5MjcsImV4cCI6MTYyNzU3MDkyN30.5yaLk0oZ42rIBFSWr5YO1uMJrQiG5inXm9eG0Y1aba8",
+  }
+```
+The long string which starts with 'eyJh' is our token.
+
+In the header:  
+```
+Key: Authorization
+Value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIzLCJpYXQiOjE2MjQ5Nzg5MjcsImV4cCI6MTYyNzU3MDkyN30.5yaLk0oZ42rIBFSWr5YO1uMJrQiG5inXm9eG0Y1aba8
+```
+
 # Endpoints #
 ----
 
@@ -142,3 +166,39 @@ Creates authentication and refresh jwt tokens for the given user.
 
   * **When:** If email or password is wrong or tokens are not created somehow.
   * **Code:** 401 Conflict
+
+## User ##
+
+### Change Password ###
+
+Changes the password of current user.
+
+* **URL**
+
+  /user/change-password
+
+* **Method:**
+
+  `PUT`
+
+* **Content-Type:**
+
+  `application/json`
+
+* **Request Body:**
+
+  **required:**
+     
+    * oldPassword
+    * newPassword
+
+    These two fields' validation is same as password validation above.
+
+* **Success Response:**
+
+  * **Code:** 204
+
+* **Error Response:**
+
+  * **When:** If user's current password and oldPassword doesn't match.
+  * **Code:** 403 Conflict
