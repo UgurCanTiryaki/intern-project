@@ -1,9 +1,7 @@
 # Endpoints #
 ----
 
-## Authentication ##
-
-These routes have common validation for email and password fields with a few exceptions. Exceptions will be provided at its route section.
+In this application all of the routes have common validation for email and password fields with a few exceptions. Exceptions will be provided at its route section.
 
 * **email:**
 
@@ -78,9 +76,10 @@ Above validations also are used as error message for corresponding error in the 
   ```
 ---
  
-### Register ###
+## Authentication ##
+### Register ###  
 
-Registers single user.
+  Registers single user.
 
 * **URL**
 
@@ -110,3 +109,36 @@ Registers single user.
 
   * **When:** If email exists
   * **Code:** 409 Conflict 
+
+### Login ###
+
+Creates authentication and refresh jwt tokens for the given user.
+
+* **URL**
+
+  /auth/login
+
+* **Method:**
+
+  `POST`
+
+* **Content-Type:**
+
+  `application/json`
+
+* **Request Body:**
+
+  **required:**
+     
+    * email
+    * password
+
+* **Success Response:**
+
+  * **Code:** 200
+  * **Content:** `{ accessToken, refreshToken }`
+ 
+* **Error Response:**
+
+  * **When:** If email or password is wrong or tokens are not created somehow.
+  * **Code:** 401 Conflict
