@@ -169,9 +169,9 @@ Creates authentication and refresh jwt tokens for the given user.
 
 ## User ##
 
-### Change Password ###
+### Change Password  (requires user to be logged in) ###
 
-Changes the password of current user.
+ Changes the password of current user.
 
 * **URL**
 
@@ -202,3 +202,54 @@ Changes the password of current user.
 
   * **When:** If user's current password and oldPassword doesn't match.
   * **Code:** 403 Conflict
+
+## Ticket ##
+
+### Send Ticket (requires user to be logged in) ###
+
+ Create a single ticket belonging to current user.
+
+* **URL**
+
+  /ticket/send-ticket
+
+* **Method:**
+
+  `POST`
+
+* **Content-Type:**
+
+  `application/json`
+
+* **Request Body:**
+
+  **required:**
+     
+    * ticket
+    * message
+
+    These two fields' validations are:
+
+    * **ticket:**
+
+      * title is required.
+      * title must be a string.
+      * title must be minimum 5 characters long.
+      * title must be maximum 150 characters long.
+
+    * **message:**
+
+      * message is required.
+      * message must be a string.
+      * message must be minimum 15 characters long.
+      * message must be maximum 1000 characters long.
+
+* **Success Response:**
+
+  * **Code:** 204
+
+* **Error Response:**
+
+  * **When:** If any of field validations above fail.
+  * **Code:** 422 Unprocessable Entity
+  * **Content:** `{ errors: [error objects] }`

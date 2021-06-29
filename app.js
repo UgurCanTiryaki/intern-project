@@ -4,6 +4,7 @@ const passport = require('passport');
 const { errorHandler, notFound } = require('./controllers/error');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const ticketRoutes = require('./routes/ticket');
 const sequelize = require('./config/database');
 require('./utils/others');
 
@@ -14,6 +15,8 @@ app.use(passport.initialize());
 app.use('/auth', authRoutes);
 
 app.use('/user', userRoutes);
+
+app.use('/ticket', ticketRoutes);
 
 app.use(notFound);
 
