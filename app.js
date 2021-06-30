@@ -23,7 +23,7 @@ app.use(notFound);
 
 app.use(errorHandler);
 
-sequelize.sync().then(() => {
+sequelize.sync({ logging: false }).then(() => {
   app.listen(8080);
 }).catch((error) => {
   console.log(error);
