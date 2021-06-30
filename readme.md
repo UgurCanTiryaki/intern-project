@@ -1,4 +1,32 @@
-# Authentication Requirements #
+# Başlangıç #
+---
+
+`Bu bir Expressjs projesidir.`
+## Projeyi Çalıştırmak İçin Gereklilikler ##
+  ### *Veritabanı* ###
+  * Bilgisayarınızda PostgreSQL'in kurulu olması gerekmektedir.  
+  * PostgreSQL kullanıcı adı *`postgres`* olmalıdır (postgresql kurulumu sırasında varsayılan olarak gelen kullanıcı adı `postgres`)  
+  * postgres kullanıcısı için şifre *`sanatteknoloji`* olmalıdır.  
+  * Veritabanı bağlantısı *5432* portu üzerinden açık olmadılır (postgresql kurulumu sırasında varsayılan olarak gelen port değeri). Bağlantıyı Windows'ta görev yöneticisine girerek, servisler kısmına postgresql yazıp çıkan seçeneğe fareniz ile sağ tıklayarak çıkan menüden açıp kapatabilirsiniz.  
+  * Veritabanı ismi *`SanatTeknoloji`* olmalıdır.  
+  
+    Veritabanı oluşturma işlemi için, eğer postgresql kurulumu sırasında pgadmin seçeneği işaretlendiyse:  
+  
+    * pgAdmin 4 programını açtıktan sonra gelen arayüzde sol üst taraftaki Servers seçeneğine tıklayıp şifre (bizim durumumuzda `sanatteknoloji`) girme işlemini tamamlayınız.
+    * Sol tarafta yeni açılan menü üzerinde, Servers seçeneğinin iki satır altında olan, Databases seçeneğine sağ tıklayıp, gelen seçenekler arasından Create ve daha sonra Database'e tıklayınız.
+    * Gelen arayüzde Database'ye karşılık gelen alana SanatTeknoloji yazıp, Save'ye tıklayınız.
+  ### *Nodejs* ###
+  * Bilgisayarınızda Node.js'in kurulu olması gerekmektedir.
+  * Node.js kurulumu yapıldıktan sonra, gerekli paketleri yüklemek için, projenin ana yolunda *`npm install`* komutu çalıştırılmalıdır.
+
+  ## Kullanım ##
+  * Request almak için *8080* portu kullanılıyor. Server'ı localhost:8080 üzerinden dinlemeye açmak için projenin ana yolunda *`npm start`* komutunu çalıştırınız. Daha sonra server'a request yapılabilir.
+  * Testleri çalıştırmak için projenin ana yolunda *`npm test`* komutunu çalıştırınız.
+  ## Notlar ##
+  *  Environment değişkeni kullanılması gereken yerlerde (veritabanı bağlantı bilgileri, jwt secret bilgisi gibi) kullanım kolaylığı olması açısından environment değişkeni kullanmadım.
+  * Testleri örnek olması açısından yaptım, tüm testler mevcut değil.
+
+# Accessing Routes That Requires Authentication #
 
 Most of endpoints requires user to be logged in.  
 To access the endpoints:
