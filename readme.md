@@ -25,6 +25,7 @@
   ## Notlar ##
   *  Environment değişkeni kullanılması gereken yerlerde (veritabanı bağlantı bilgileri, jwt secret bilgisi gibi) kullanım kolaylığı olması açısından environment değişkeni kullanmadım.
   * Testleri örnek olması açısından yaptım, tüm testler mevcut değil.
+  * Jwt Token zaman aşımı süresini kullanım rahatlığı olması açısından otuz gün olarak ayarladım.
 
 # Accessing Routes That Requires Authentication #
 

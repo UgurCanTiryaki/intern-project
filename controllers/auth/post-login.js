@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
     },
     'secret',
     {
-      expiresIn: '15m', // 15 min
+      expiresIn: '30d', // 30 days
     }
   );
 
