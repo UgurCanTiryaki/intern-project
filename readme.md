@@ -5,7 +5,7 @@ To access the endpoints:
 * Register from the path `/auth/register`
 * Login from the path `/auth/login` which gives you access token via response body.
 * Take the string value corresponding to accessToken property.
-* In the header of endpoint which requires user to be logged in, write `Authorization` as key and Bearer accessToken as value.
+* In the header of endpoint which requires user to be logged in, write `Authorization` as key and `Bearer accessToken` as value.
 
 **Example:**
   
@@ -21,6 +21,11 @@ In the header:
 Key: Authorization
 Value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIzLCJpYXQiOjE2MjQ5Nzg5MjcsImV4cCI6MTYyNzU3MDkyN30.5yaLk0oZ42rIBFSWr5YO1uMJrQiG5inXm9eG0Y1aba8
 ```
+
+* **Error Response:**
+
+  * **When:** If user is not logged in.
+  * **Code:** 401 Unauthorized
 
 # Endpoints #
 ----
@@ -205,6 +210,28 @@ Creates authentication and refresh jwt tokens for the given user.
 
 ## Ticket ##
 
+In this section all of the routes have common validation for title and message fields with a few exceptions. Exceptions will be provided at its route section.
+
+  * **title:**
+
+    * title is required.
+    * title must be a string.
+    * title must be minimum 5 characters long.
+    * title must be maximum 150 characters long.
+
+  * **message:**
+
+    * message is required.
+    * message must be a string.
+    * message must be minimum 15 characters long.
+    * message must be maximum 1000 characters long.
+
+  * **Error Response for Above Validations:**
+
+    * **When:** If any of field validations above fail.
+    * **Code:** 422 Unprocessable Entity
+    * **Content:** `{ errors: [error objects] }`
+
 ### Send Ticket (requires user to be logged in) ###
 
  Create a single ticket belonging to current user.
@@ -228,32 +255,9 @@ Creates authentication and refresh jwt tokens for the given user.
     * ticket
     * message
 
-    These two fields' validations are:
-
-    * **ticket:**
-
-      * title is required.
-      * title must be a string.
-      * title must be minimum 5 characters long.
-      * title must be maximum 150 characters long.
-
-    * **message:**
-
-      * message is required.
-      * message must be a string.
-      * message must be minimum 15 characters long.
-      * message must be maximum 1000 characters long.
-
 * **Success Response:**
 
   * **Code:** 204
-
-* **Error Response:**
-
-  * **When:** If any of field validations above fail.
-  * **Code:** 422 Unprocessable Entity
-  * **Content:** `{ errors: [error objects] }`
-
 ### List User Tickets (requires user to be logged in) ###
 
  Create a single ticket belonging to current user.
