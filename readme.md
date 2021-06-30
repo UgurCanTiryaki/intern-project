@@ -253,3 +253,20 @@ Creates authentication and refresh jwt tokens for the given user.
   * **When:** If any of field validations above fail.
   * **Code:** 422 Unprocessable Entity
   * **Content:** `{ errors: [error objects] }`
+
+### List User Tickets (requires user to be logged in) ###
+
+ Create a single ticket belonging to current user.
+
+* **URL**
+
+  /ticket/list-user-tickets
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+  * **Code:** 200
+  * **Content:** `[ ticket objects ]`

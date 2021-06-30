@@ -2,7 +2,7 @@ const express = require('express');
 const expressValidator = require('express-validator');
 const passport = require('passport');
 
-const { postSendTicket } = require('../controllers/ticket');
+const { getListUserTickets, postSendTicket } = require('../controllers/ticket');
 
 const { checkValidationResult } = require('../middlewares');
 
@@ -28,6 +28,14 @@ router.post('/send-ticket',
     checkValidationResult
   ],
   postSendTicket
+);
+
+router.get('/list-user-tickets',
+  passport.authenticate(
+    'jwt-auth',
+    { session: false }
+  ),
+  getListUserTickets
 );
 
 module.exports = router;
