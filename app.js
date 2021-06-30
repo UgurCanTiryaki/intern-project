@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+require('express-async-errors');
 
 const { errorHandler, notFound } = require('./controllers/error');
 const authRoutes = require('./routes/auth');
