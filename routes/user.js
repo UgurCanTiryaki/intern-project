@@ -21,7 +21,7 @@ router.put('/change-password',
       .isLength({ max: 20 }).withMessage('newPassword must be maximum 20 characters long.')
       .not().matches(RegExp(/\s/)).withMessage('newPassword must not contain any space character.'),
     expressValidator.body('oldPassword')
-      .exists().withMessage('oldPasswordis required.')
+      .exists().withMessage('oldPassword is required.')
       .isString().withMessage('oldPassword must be a string.')
       .isLength({ min: 8 }).withMessage('oldPassword must be minimum 8 characters long.')
       .isLength({ max: 20 }).withMessage('oldPassword must be maximum 20 characters long.')
